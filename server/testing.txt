@@ -2,7 +2,7 @@
 
 # add user
 # mutation {
-#   addUser(name: "Suraj Verma", email: "suraj@gmail.com", password: "password", passwordConfirm: "password") {
+#   addUser(name: "Gaurav Laud", email: "gaurav@gmail.com", password: "password", passwordConfirm: "password") {
 #     id,
 #     name,
 #     email,
@@ -39,7 +39,7 @@
 
 # delete user
 # mutation {
-#   deleteUser(id: "640b8b7ef458f803741d7a9c") {
+#   deleteUser(id: "640b98da5cb164a32fb17328") {
 #     id
 #   }
 # }
@@ -49,7 +49,7 @@
 
 # add post
 # mutation {
-#   addPost(title: "Post 2", description: "Description 2", userId: "640b8b68f458f803741d7a9a") {
+#   addPost(title: "Post 1", description: "Description 1", userId: "640b99d45cb164a32fb17357") {
 #     id,
 #     title,
 #     description,
@@ -62,34 +62,34 @@
 #       id,
 #       data
 #     },
-#			timestamp
+# 			timestamp
 #   }
 # }
 
-# get posts
-# {
-#   posts {
-#     id,
-#     title,
-#     description,
-#     userId {
-#       id,
-#       name,
-#       email
-#     },
-#     comments {
-#       id,
-#       data,
-#       userId {
-#         id,
-#         name,
-#         email
-#       }
-#       timestamp,
-#     }
-#     timestamp
-#   }
-# }
+# # get posts
+{
+  posts {
+    id,
+    title,
+    description,
+    userId {
+      id,
+      name,
+      email
+    },
+    comments {
+      id,
+      data,
+      userId {
+        id,
+        name,
+        email
+      }
+      timestamp,
+    }
+    timestamp
+  }
+}
 
 # get post by id
 # {
@@ -152,7 +152,7 @@
 
 # add comment 
 # mutation {
-#   addComment(data: "Lauda", userId: "640b8b57f458f803741d7a98", postId: "640b8e5473da86c6a6f285a1") {
+#   addComment(data: "Comment 3", userId: "640b8b68f458f803741d7a9a", postId: "640b8e7773da86c6a6f285a6") {
 #     id,
 #     data,
 #     userId {
@@ -226,7 +226,7 @@
 
 # delete comment
 # mutation {
-#   deleteComment(id: "") {
+#   deleteComment(id: "640b99565cb164a32fb1733c") {
 #     id
 #   }
 # }

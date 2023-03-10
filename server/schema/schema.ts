@@ -203,6 +203,11 @@ const mutation = new GraphQLObjectType({
             post.deleteOne();
           });
         });
+        Comment.find({ userId: args.id }).then((comments) => {
+          comments.forEach((comment) => {
+            comment.deleteOne();
+          });
+        });
         return User.findByIdAndDelete(args.id);
       },
     },
