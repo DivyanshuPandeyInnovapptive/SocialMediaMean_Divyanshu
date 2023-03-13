@@ -1,4 +1,4 @@
-<!-- <div class="add-post-container" *ngIf="update_post && update_post.id !== ''">
+<div class="add-post-container" *ngIf="update_post && update_post.id !== ''">
   {{ getUpdatePost(update_post) }}
   <mat-card>
     <mat-card-content>
@@ -49,11 +49,4 @@
       </div>
     </mat-card-content>
   </mat-card>
-</div> -->
-
-<div class="add-post-container" *ngIf="update_post && update_post.id !== ''">
-  {{ this.getUpdatePost(update_post) }}
-  <input type="text" [(ngModel)]="this.temp_post_title" />
-  <input type="text" [(ngModel)]="this.temp_post_description" />
-  {{ this.temp_post_description }}{{ this.temp_post_title }}
 </div>

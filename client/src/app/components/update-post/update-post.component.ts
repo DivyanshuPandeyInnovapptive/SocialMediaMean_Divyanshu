@@ -28,10 +28,12 @@ export class UpdatePostComponent {
   }
 
   getUpdatePost(post: Partial<Post>) {
-    let temp_post = JSON.parse(JSON.stringify(post));
-    this.temp_post_id = temp_post.id;
-    this.temp_post_title = temp_post.title;
-    this.temp_post_description = temp_post.description;
+    if (this.temp_post_id === '') {
+      let temp_post = JSON.parse(JSON.stringify(post));
+      this.temp_post_id = temp_post.id;
+      this.temp_post_title = temp_post.title;
+      this.temp_post_description = temp_post.description;
+    }
   }
 
   updatePost(id: string, title: string, description: string) {
