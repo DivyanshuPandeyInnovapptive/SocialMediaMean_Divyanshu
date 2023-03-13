@@ -16,5 +16,16 @@ export const postsReducer = createReducer(
       posts: action.payload,
       loading: false,
     };
+  }),
+  on(postActions.addPost, (state, action) => {
+    return {
+      ...state,
+    };
+  }),
+  on(postActions.addPostLoaded, (state, action) => {
+    return {
+      ...state,
+      posts: [...state.posts, action.payload],
+    };
   })
 );

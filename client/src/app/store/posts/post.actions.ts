@@ -7,3 +7,12 @@ export const getPostsLoaded = createAction(
   props<{ payload: Post[] }>()
 );
 export const getPostsError = createAction('[Posts Component] Get_Posts_Error');
+
+export const addPost = createAction(
+  '[Posts Componenet] Add_Post',
+  props<{ payload: Partial<Post> }>()
+);
+export const addPostLoaded = createAction(
+  '[Posts Componenet] Add_Post_Loaded',
+  props<{ payload: Post }>()
+);

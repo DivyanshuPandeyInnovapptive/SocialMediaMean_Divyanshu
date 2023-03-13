@@ -21,6 +21,10 @@
     justify-content: space-between;
 }
 
+.post-c {
+    width: 10%;
+}
+
 .post-comment {
     width: 95%;
 }

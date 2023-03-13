@@ -5,6 +5,7 @@
         <h2>{{ post.title }}</h2>
         <div class="post-c">
           <p>{{ post.userId.name }}</p>
+          <p>{{ post.userId.email }}</p>
           <h5>{{ post.timestamp | date }}</h5>
         </div>
       </div>
@@ -22,12 +23,16 @@
       </form>
       <!-- comment -->
       <h3><b>Comments</b></h3>
-      <div class="comment-c" *ngFor="let comment of post.comments">
-        <p>{{ comment.data }}</p>
-        <div class="post-c">
-          <p>{{ comment.userId.name }}</p>
-          <h5>{{ comment.timestamp | date }}</h5>
+      <hr />
+      <div *ngFor="let comment of post.comments">
+        <div class="comment-c">
+          <p>{{ comment.userId.name }} : {{ comment.data }}</p>
+          <div class="post-c">
+            <p>{{ comment.userId.email }}</p>
+            <h5>{{ comment.timestamp | date }}</h5>
+          </div>
         </div>
+        <hr />
       </div>
     </mat-card-content>
   </mat-card>

@@ -3,12 +3,29 @@ import { Apollo } from 'apollo-angular';
 import { GET_POSTS } from '../graphql/queries';
 import { Observable, map } from 'rxjs';
 import { Post } from '../store/posts/post.model';
+import { ADD_POST } from '../graphql/mutation';
 
 @Injectable({
   providedIn: 'root',
 })
 export class ApiServiceService {
-  constructor(private apollo: Apollo) {}
+  addPost(post: Partial<Post>): Observable<Post> {
+    return this.apollo
+      .mutate({
+        mutation: ADD_POST,
+        variables: {
+          title: post.title,
+          description: post.description,
+          userId: post.userId?.id,
+        },
+      })
+      .pipe(
+        map((result: any) => {
+          // console.log('Result', result);
+          return result.data.addPost;
+        })
+      );
+  }
 
   getPosts(): Observable<Post[]> {
     return this.apollo.query({ query: GET_POSTS }).pipe(
@@ -17,4 +34,6 @@ export class ApiServiceService {
       })
     );
   }
+
+  constructor(private apollo: Apollo) {}
 }
