@@ -1,0 +1,36 @@
+.post-container {
+    width: 80vw;
+    padding: 1rem;
+    position: fixed;
+    overflow-y: scroll;
+    max-height: 92vh;
+    top: 4rem;
+}
+
+.post {
+    margin-bottom: 1rem;
+}
+
+.post-c1 {
+    display: flex;
+    justify-content: space-between;
+}
+
+.post-c2 {
+    display: flex;
+    justify-content: space-between;
+}
+
+.post-comment {
+    width: 95%;
+}
+
+.comment-c {
+    display: flex;
+    justify-content: space-between;
+}
+
+.post-form {
+    display: flex;
+    justify-content: space-between;
+}

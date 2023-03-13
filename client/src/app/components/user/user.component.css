@@ -1,0 +1,7 @@
+.user-container {
+    width: 20vw;
+    padding: 1rem;
+    position: fixed;
+    right: 0;
+    top: 4rem;
+}

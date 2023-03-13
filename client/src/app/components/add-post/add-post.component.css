@@ -1,0 +1,12 @@
+.add-post-container {
+    width: 20vw;
+    padding: 1rem;
+    position: fixed;
+    right: 0;
+    top: 14rem;
+}
+
+.create-post-form {
+    display: flex;
+    flex-direction: column;
+}
