@@ -1,0 +1,11 @@
+.form-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.auth-card {
+    align-items: center;
+    padding: 1rem;
+}
