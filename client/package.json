@@ -23,6 +23,7 @@
     "@apollo/client": "^3.7.10",
     "@ng-bootstrap/ng-bootstrap": "^14.0.1",
     "@ngrx/effects": "^15.3.0",
+    "@ngrx/entity": "^15.3.0",
     "@ngrx/store": "^15.3.0",
     "@ngrx/store-devtools": "^15.3.0",
     "@popperjs/core": "^2.11.6",

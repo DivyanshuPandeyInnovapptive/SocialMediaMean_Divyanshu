@@ -8,9 +8,18 @@ export const GET_POSTS = gql`
       description
       userId {
         id
+        name
+        email
       }
       comments {
         id
+        data
+        userId {
+          id
+          name
+          email
+        }
+        timestamp
       }
       timestamp
     }

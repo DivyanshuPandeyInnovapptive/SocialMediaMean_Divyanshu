@@ -13,13 +13,7 @@ export const postsReducer = createReducer(
   on(postActions.getPostsLoaded, (state, action) => {
     return {
       ...state,
-      ...action.payload,
-      loading: false,
-    };
-  }),
-  on(postActions.getPostsError, (state, action) => {
-    return {
-      ...state,
+      posts: action.payload,
       loading: false,
     };
   })

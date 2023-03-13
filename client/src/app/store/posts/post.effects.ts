@@ -19,8 +19,7 @@ export class PostsEffects {
         this.apiService
           .getPosts()
           .pipe(map((posts) => postsActions.getPostsLoaded({ payload: posts })))
-      ),
-      catchError(() => of(postsActions.getPostsError()))
+      )
     )
   );
 }

@@ -3,6 +3,8 @@ import { Store } from '@ngrx/store';
 import { Post } from 'src/app/store/posts/post.model';
 import * as postsActions from '../../store/posts/post.actions';
 import { Observable } from 'rxjs';
+import { PostState } from 'src/app/store/posts/post.state';
+import { selectPosts } from 'src/app/store/posts/post.selectors';
 
 @Component({
   selector: 'app-posts',
@@ -14,7 +16,7 @@ export class PostsComponent {
 
   // constructor(private apiService: ApiServiceService) {}
 
-  posts$: Observable<Post[]> = this.store.select('posts');
+  posts$: Observable<Post[]> = this.store.select(selectPosts);
 
   constructor(private store: Store<{ posts: Post[] }>) {}
 

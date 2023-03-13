@@ -1,15 +1,15 @@
 <div class="post-container">
-  <mat-card class="post">
+  <mat-card class="post" *ngFor="let post of posts$ | async">
     <mat-card-content>
       <div class="post-c1">
-        <h2>Title 1</h2>
+        <h2>{{ post.title }}</h2>
         <div class="post-c">
-          <p>User Name</p>
-          <h5>Timestamp</h5>
+          <p>{{ post.userId.name }}</p>
+          <h5>{{ post.timestamp | date }}</h5>
         </div>
       </div>
       <div class="post-c2">
-        <p class="post-description">Description</p>
+        <p class="post-description">{{ post.description }}</p>
       </div>
       <form class="post-form">
         <mat-form-field class="post-comment">
@@ -21,102 +21,14 @@
         </button>
       </form>
       <!-- comment -->
-      <p>Comments</p>
-      <div class="comment-c">
-        <p>Some comment</p>
+      <h3><b>Comments</b></h3>
+      <div class="comment-c" *ngFor="let comment of post.comments">
+        <p>{{ comment.data }}</p>
         <div class="post-c">
-          <p>User Name</p>
-          <h5>Timestamp</h5>
-        </div>
-      </div>
-      <div class="comment-c">
-        <p>Some comment</p>
-        <div class="post-c">
-          <p>User Name</p>
-          <h5>Timestamp</h5>
+          <p>{{ comment.userId.name }}</p>
+          <h5>{{ comment.timestamp | date }}</h5>
         </div>
       </div>
     </mat-card-content>
   </mat-card>
-
-  <mat-card class="post">
-    <mat-card-content>
-      <div class="post-c1">
-        <h2>Title 1</h2>
-        <div class="post-c">
-          <p>User Name</p>
-          <h5>Timestamp</h5>
-        </div>
-      </div>
-      <div class="post-c2">
-        <p class="post-description">Description</p>
-      </div>
-      <form class="post-form">
-        <mat-form-field class="post-comment">
-          <mat-label>Leave a comment</mat-label>
-          <input type="text" matInput placeholder="Comment here..." />
-        </mat-form-field>
-        <button mat-fab color="primary" aria-label="Comment">
-          <mat-icon>send</mat-icon>
-        </button>
-      </form>
-      <!-- comment -->
-      <p>Comments</p>
-      <div class="comment-c">
-        <p>Some comment</p>
-        <div class="post-c">
-          <p>User Name</p>
-          <h5>Timestamp</h5>
-        </div>
-      </div>
-      <div class="comment-c">
-        <p>Some comment</p>
-        <div class="post-c">
-          <p>User Name</p>
-          <h5>Timestamp</h5>
-        </div>
-      </div>
-    </mat-card-content>
-  </mat-card>
-
-  <mat-card class="post">
-    <mat-card-content>
-      <div class="post-c1">
-        <h2>Title 1</h2>
-        <div class="post-c">
-          <p>User Name</p>
-          <h5>Timestamp</h5>
-        </div>
-      </div>
-      <div class="post-c2">
-        <p class="post-description">Description</p>
-      </div>
-      <form class="post-form">
-        <mat-form-field class="post-comment">
-          <mat-label>Leave a comment</mat-label>
-          <input type="text" matInput placeholder="Comment here..." />
-        </mat-form-field>
-        <button mat-fab color="primary" aria-label="Comment">
-          <mat-icon>send</mat-icon>
-        </button>
-      </form>
-      <!-- comment -->
-      <p>Comments</p>
-      <div class="comment-c">
-        <p>Some comment</p>
-        <div class="post-c">
-          <p>User Name</p>
-          <h5>Timestamp</h5>
-        </div>
-      </div>
-      <div class="comment-c">
-        <p>Some comment</p>
-        <div class="post-c">
-          <p>User Name</p>
-          <h5>Timestamp</h5>
-        </div>
-      </div>
-    </mat-card-content>
-  </mat-card>
-  {{ posts$ | async | json }}
 </div>
