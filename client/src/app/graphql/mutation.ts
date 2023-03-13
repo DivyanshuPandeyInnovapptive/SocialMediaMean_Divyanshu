@@ -25,3 +25,37 @@ export const ADD_POST = gql`
     }
   }
 `;
+
+export const UPDATE_POST = gql`
+  mutation updatePost($id: ID!, $title: String!, $description: String!) {
+    updatePost(id: $id, title: $title, description: $description) {
+      id
+      title
+      description
+      userId {
+        id
+        name
+        email
+      }
+      comments {
+        id
+        data
+        userId {
+          id
+          name
+          email
+        }
+        timestamp
+      }
+      timestamp
+    }
+  }
+`;
+
+export const DELETE_POST = gql`
+  mutation deletePost($id: ID!) {
+    deletePost(id: $id) {
+      id
+    }
+  }
+`;

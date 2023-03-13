@@ -27,5 +27,16 @@ export const postsReducer = createReducer(
       ...state,
       posts: [...state.posts, action.payload],
     };
+  }),
+  on(postActions.deletePost, (state, action) => {
+    return {
+      ...state,
+    };
+  }),
+  on(postActions.deletePostSuccess, (state, action) => {
+    return {
+      ...state,
+      posts: state.posts.filter((post) => post.id !== action.payload.id),
+    };
   })
 );

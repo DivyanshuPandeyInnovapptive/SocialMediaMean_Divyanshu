@@ -4,6 +4,22 @@
       <div class="post-c1">
         <h2>{{ post.title }}</h2>
         <div class="post-c">
+          <div *ngIf="post.userId.id === user_id">
+            <button mat-mini-fab color="primary" aria-label="Update">
+              <mat-icon>edit</mat-icon>
+            </button>
+            <span>&nbsp;&nbsp;</span>
+            <button
+              (click)="deletePost(post.id)"
+              mat-mini-fab
+              color="warn"
+              aria-label="Delete"
+            >
+              <mat-icon>delete</mat-icon>
+            </button>
+            <br />
+            <br />
+          </div>
           <p>{{ post.userId.name }}</p>
           <p>{{ post.userId.email }}</p>
           <h5>{{ post.timestamp | date }}</h5>

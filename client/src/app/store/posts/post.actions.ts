@@ -16,3 +16,13 @@ export const addPostLoaded = createAction(
   '[Posts Componenet] Add_Post_Loaded',
   props<{ payload: Post }>()
 );
+
+export const deletePost = createAction(
+  '[Posts Component] Delete_Post',
+  props<{ id: string }>()
+);
+
+export const deletePostSuccess = createAction(
+  '[Posts Component] Delete_Post_Success',
+  props<{ payload: Partial<Post> }>()
+);

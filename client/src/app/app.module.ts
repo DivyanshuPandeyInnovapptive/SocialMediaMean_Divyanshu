@@ -23,6 +23,7 @@ import { StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { EffectsModule } from '@ngrx/effects';
 import { PostsEffects } from './store/posts/post.effects';
+import { UpdatePostComponent } from './components/update-post/update-post.component';
 
 @NgModule({
   declarations: [
@@ -32,6 +33,7 @@ import { PostsEffects } from './store/posts/post.effects';
     LoginComponent,
     SignupComponent,
     AddPostComponent,
+    UpdatePostComponent,
     PostsComponent,
     UserComponent,
   ],

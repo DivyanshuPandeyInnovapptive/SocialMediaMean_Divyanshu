@@ -12,11 +12,16 @@ import { selectPosts } from 'src/app/store/posts/post.selectors';
   styleUrls: ['./posts.component.css'],
 })
 export class PostsComponent {
+  user_id = '640eea0a0af8537bdbc41942';
   // posts$: Observable<Post[]> = this.apiService.getPosts();
 
   // constructor(private apiService: ApiServiceService) {}
 
   posts$: Observable<Post[]> = this.store.select(selectPosts);
+
+  deletePost(id: string) {
+    this.store.dispatch(postsActions.deletePost({ id }));
+  }
 
   constructor(private store: Store<{ posts: Post[] }>) {}
 

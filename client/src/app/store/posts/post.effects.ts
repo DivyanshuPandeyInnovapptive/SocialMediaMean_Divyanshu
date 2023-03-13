@@ -34,4 +34,18 @@ export class PostsEffects {
       )
     );
   });
+
+  deletePost$ = createEffect(() => {
+    return this.actions$.pipe(
+      ofType('[Posts Component] Delete_Post'),
+      map((action: { id: string }) => action.id),
+      mergeMap((id) =>
+        this.apiService
+          .deletePost(id)
+          .pipe(
+            map((post) => postsActions.deletePostSuccess({ payload: post }))
+          )
+      )
+    );
+  });
 }
