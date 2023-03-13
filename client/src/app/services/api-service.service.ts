@@ -3,7 +3,7 @@ import { Apollo } from 'apollo-angular';
 import { GET_POSTS } from '../graphql/queries';
 import { Observable, map } from 'rxjs';
 import { Post } from '../store/posts/post.model';
-import { ADD_POST, DELETE_POST } from '../graphql/mutation';
+import { ADD_POST, DELETE_POST, UPDATE_POST } from '../graphql/mutation';
 
 @Injectable({
   providedIn: 'root',
@@ -23,6 +23,23 @@ export class ApiServiceService {
         map((result: any) => {
           // console.log('Result', result);
           return result.data.addPost;
+        })
+      );
+  }
+
+  updatePost(post: Partial<Post>): Observable<Post> {
+    return this.apollo
+      .mutate({
+        mutation: UPDATE_POST,
+        variables: {
+          id: post.id,
+          title: post.title,
+          description: post.description,
+        },
+      })
+      .pipe(
+        map((result: any) => {
+          return result.data.updatePost;
         })
       );
   }

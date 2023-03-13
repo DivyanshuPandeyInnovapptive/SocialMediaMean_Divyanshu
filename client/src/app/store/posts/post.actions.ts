@@ -9,11 +9,21 @@ export const getPostsLoaded = createAction(
 export const getPostsError = createAction('[Posts Component] Get_Posts_Error');
 
 export const addPost = createAction(
-  '[Posts Componenet] Add_Post',
+  '[Posts Component] Add_Post',
   props<{ payload: Partial<Post> }>()
 );
 export const addPostLoaded = createAction(
-  '[Posts Componenet] Add_Post_Loaded',
+  '[Posts Component] Add_Post_Loaded',
+  props<{ payload: Post }>()
+);
+
+export const updatePost = createAction(
+  '[Posts Component] Update_Post',
+  props<{ payload: Partial<Post> }>()
+);
+
+export const updatePostSuccess = createAction(
+  '[Posts Component] Update_Post_Success',
   props<{ payload: Post }>()
 );
 

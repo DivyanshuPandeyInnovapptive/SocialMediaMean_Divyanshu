@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Post } from 'src/app/store/posts/post.model';
 import * as postsActions from '../../store/posts/post.actions';
@@ -13,6 +13,12 @@ import { selectPosts } from 'src/app/store/posts/post.selectors';
 })
 export class PostsComponent {
   user_id = '640eea0a0af8537bdbc41942';
+
+  @Output() updatePostEvent = new EventEmitter<Post>();
+
+  updatePost(post: Post) {
+    this.updatePostEvent.emit(post);
+  }
   // posts$: Observable<Post[]> = this.apiService.getPosts();
 
   // constructor(private apiService: ApiServiceService) {}

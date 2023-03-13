@@ -1,38 +1,44 @@
-<div class="add-post-container">
+<!-- <div class="add-post-container" *ngIf="update_post && update_post.id !== ''">
+  {{ getUpdatePost(update_post) }}
   <mat-card>
     <mat-card-content>
       <div class="update-c">
         <h2>Update Post</h2>
-        <button mat-mini-fab color="secondary" aria-label="Delete">
+        <button
+          (click)="hideComponent()"
+          mat-mini-fab
+          color="secondary"
+          aria-label="Delete"
+        >
           <mat-icon>clear</mat-icon>
         </button>
       </div>
       <br />
-      <form
-        [formGroup]="myForm"
-        (ngSubmit)="addPost(myForm)"
-        class="create-post-form"
-      >
+      <div class="create-post-form">
         <mat-form-field class="post-title">
           <mat-label>Title</mat-label>
           <input
             type="text"
             matInput
-            formControlName="title"
+            [(ngModel)]="temp_post_title"
             placeholder="Post Title"
           />
         </mat-form-field>
+        {{ temp_post_title }}
+        {{ temp_post_description }}
         <mat-form-field class="post-description">
           <mat-label>Description</mat-label>
           <input
             type="text"
+            [(ngModel)]="temp_post_description"
             matInput
-            formControlName="description"
             placeholder="Post Description"
           />
         </mat-form-field>
         <button
-          type="submit"
+          (click)="
+            updatePost(temp_post_id, temp_post_title, temp_post_description)
+          "
           mat-raised-button
           color="primary"
           aria-label="SubmitPost"
@@ -40,7 +46,14 @@
           <div>Update</div>
           <mat-icon>send</mat-icon>
         </button>
-      </form>
+      </div>
     </mat-card-content>
   </mat-card>
+</div> -->
+
+<div class="add-post-container" *ngIf="update_post && update_post.id !== ''">
+  {{ this.getUpdatePost(update_post) }}
+  <input type="text" [(ngModel)]="this.temp_post_title" />
+  <input type="text" [(ngModel)]="this.temp_post_description" />
+  {{ this.temp_post_description }}{{ this.temp_post_title }}
 </div>

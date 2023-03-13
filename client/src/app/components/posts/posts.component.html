@@ -5,7 +5,12 @@
         <h2>{{ post.title }}</h2>
         <div class="post-c">
           <div *ngIf="post.userId.id === user_id">
-            <button mat-mini-fab color="primary" aria-label="Update">
+            <button
+              (click)="updatePost(post)"
+              mat-mini-fab
+              color="primary"
+              aria-label="Update"
+            >
               <mat-icon>edit</mat-icon>
             </button>
             <span>&nbsp;&nbsp;</span>

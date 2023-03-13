@@ -25,12 +25,26 @@ export class PostsEffects {
 
   addPost$ = createEffect(() => {
     return this.actions$.pipe(
-      ofType('[Posts Componenet] Add_Post'),
+      ofType('[Posts Component] Add_Post'),
       map((action: { payload: Partial<Post> }) => action.payload),
       mergeMap((post) =>
         this.apiService
           .addPost(post)
           .pipe(map((post) => postsActions.addPostLoaded({ payload: post })))
+      )
+    );
+  });
+
+  updatePost$ = createEffect(() => {
+    return this.actions$.pipe(
+      ofType('[Posts Component] Update_Post'),
+      map((action: { payload: Partial<Post> }) => action.payload),
+      mergeMap((post) =>
+        this.apiService
+          .updatePost(post)
+          .pipe(
+            map((post) => postsActions.updatePostSuccess({ payload: post }))
+          )
       )
     );
   });

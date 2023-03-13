@@ -1,8 +1,8 @@
 <div class="home-container">
-  <app-posts></app-posts>
+  <app-posts (updatePostEvent)="updatePost($event)"></app-posts>
   <div>
     <app-user></app-user>
     <app-add-post></app-add-post>
-    <app-update-post></app-update-post>
+    <app-update-post [update_post]="update_post"></app-update-post>
   </div>
 </div>

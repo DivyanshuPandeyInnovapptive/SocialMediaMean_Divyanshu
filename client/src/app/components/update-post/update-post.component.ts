@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Post } from 'src/app/store/posts/post.model';
 import * as postActions from '../../store/posts/post.actions';
@@ -10,65 +10,40 @@ import { Store } from '@ngrx/store';
   styleUrls: ['./update-post.component.css'],
 })
 export class UpdatePostComponent {
-  myForm: FormGroup;
+  @Input() update_post: Partial<Post> = {
+    id: '',
+    title: '',
+    description: '',
+  };
+  temp_post_id: string = '';
+  temp_post_title: string = '';
+  temp_post_description: string = '';
 
-  ngOnInit() {
-    this.myForm = this.fb.group({
-      title: [
-        '',
-        [
-          Validators.required,
-          Validators.maxLength(50),
-          Validators.pattern('^[a-zA-Z ]*$'),
-        ],
-      ],
-      description: [
-        '',
-        [
-          Validators.required,
-          Validators.maxLength(200),
-          Validators.pattern('^[a-zA-Z ]*$'),
-        ],
-      ],
-      userId: {
-        id: '640eea0a0af8537bdbc41942',
-        name: 'Divyanshu Pandey',
-        email: 'divyanshu@gmail.com',
-      },
-    });
-  }
-
-  addPost(form: FormGroup) {
-    const newPost: Partial<Post> = {
-      title: form.value.title,
-      description: form.value.description,
-      userId: {
-        id: '640eea0a0af8537bdbc41942',
-        name: 'Divyanshu Pandey',
-        email: 'divyanshu@gmail.com',
-      },
+  hideComponent() {
+    this.update_post = {
+      id: '',
+      title: '',
+      description: '',
     };
-
-    this.store.dispatch(postActions.addPost({ payload: newPost }));
-    this.myForm.reset();
   }
 
-  // post: Partial<Post> = {
-  //   title: 'New Title',
-  //   description: 'New Description',
-  //   userId: {
-  //     id: '640eea0a0af8537bdbc41942',
-  //     name: 'Divyanshu Pandey',
-  //     email: 'divyanshu@gmail.com',
-  //   },
-  // };
+  getUpdatePost(post: Partial<Post>) {
+    let temp_post = JSON.parse(JSON.stringify(post));
+    this.temp_post_id = temp_post.id;
+    this.temp_post_title = temp_post.title;
+    this.temp_post_description = temp_post.description;
+  }
 
-  // addPost() {
-  //   this.store.dispatch(postActions.addPost({ payload: this.post }));
-  // }
+  updatePost(id: string, title: string, description: string) {
+    console.log(id, title, description);
+    let temp_post: Partial<Post> = {
+      id,
+      title,
+      description,
+    };
+    this.store.dispatch(postActions.updatePost({ payload: temp_post }));
+    this.hideComponent();
+  }
 
-  constructor(
-    private store: Store<{ posts: Post[] }>,
-    private fb: FormBuilder
-  ) {}
+  constructor(private store: Store<{ posts: Post[] }>) {}
 }

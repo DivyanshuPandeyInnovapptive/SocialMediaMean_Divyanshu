@@ -28,6 +28,20 @@ export const postsReducer = createReducer(
       posts: [...state.posts, action.payload],
     };
   }),
+  on(postActions.updatePost, (state, action) => {
+    return {
+      ...state,
+    };
+  }),
+  on(postActions.updatePostSuccess, (state, action) => {
+    return {
+      ...state,
+      posts: state.posts.map((post) => {
+        if (post.id === action.payload.id) return action.payload;
+        else return post;
+      }),
+    };
+  }),
   on(postActions.deletePost, (state, action) => {
     return {
       ...state,
