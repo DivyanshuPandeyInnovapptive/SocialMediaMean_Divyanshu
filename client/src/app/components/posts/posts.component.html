@@ -2,7 +2,12 @@
   <mat-card class="post" *ngFor="let post of posts$ | async">
     <mat-card-content>
       <div class="post-c1">
-        <h2>{{ post.title }}</h2>
+        <div>
+          <h2>{{ post.title }}</h2>
+          <div class="post-c2">
+            <p class="post-description">{{ post.description }}</p>
+          </div>
+        </div>
         <div class="post-c">
           <div *ngIf="post.userId.id === user_id">
             <button
@@ -30,9 +35,9 @@
           <h5>{{ post.timestamp | date }}</h5>
         </div>
       </div>
-      <div class="post-c2">
+      <!-- <div class="post-c2">
         <p class="post-description">{{ post.description }}</p>
-      </div>
+      </div> -->
       <form class="post-form">
         <mat-form-field class="post-comment">
           <mat-label>Leave a comment</mat-label>
