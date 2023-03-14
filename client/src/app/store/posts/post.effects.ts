@@ -62,4 +62,40 @@ export class PostsEffects {
       )
     );
   });
+
+  // comment
+  addComment$ = createEffect(() => {
+    return this.actions$.pipe(
+      ofType('[Posts Component] Add_Comment'),
+      map((action: { data: string; userId: string; postId: string }) => {
+        return {
+          data: action.data,
+          userId: action.userId,
+          postId: action.postId,
+        };
+      }),
+      mergeMap((comment) => {
+        // console.log('madarchod', comment);
+        return this.apiService
+          .addComment(comment.data, comment.userId, comment.postId)
+          .pipe(
+            map((comment) =>
+              postsActions.addCommentSuccess({
+                id: comment.id,
+                postId: {
+                  id: comment.postId.id,
+                },
+                data: comment.data,
+                userId: {
+                  id: comment.userId.id,
+                  name: comment.userId.name,
+                  email: comment.userId.email,
+                },
+                timestamp: comment.timestamp,
+              })
+            )
+          );
+      })
+    );
+  });
 }

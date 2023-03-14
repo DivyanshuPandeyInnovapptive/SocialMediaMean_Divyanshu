@@ -3,7 +3,13 @@ import { Apollo } from 'apollo-angular';
 import { GET_POSTS } from '../graphql/queries';
 import { Observable, map } from 'rxjs';
 import { Post } from '../store/posts/post.model';
-import { ADD_POST, DELETE_POST, UPDATE_POST } from '../graphql/mutation';
+import {
+  ADD_COMMENT,
+  ADD_POST,
+  DELETE_POST,
+  UPDATE_POST,
+} from '../graphql/mutation';
+import { Comment } from '../store/comments/comment.model';
 
 @Injectable({
   providedIn: 'root',
@@ -64,6 +70,30 @@ export class ApiServiceService {
         map((result: any) => {
           console.log('Delete Result', result);
           return result.data.deletePost;
+        })
+      );
+  }
+
+  // add comment
+  addComment(
+    data: string,
+    userId: string,
+    postId: string
+  ): Observable<Comment> {
+    console.log(data, userId, postId);
+    return this.apollo
+      .mutate({
+        mutation: ADD_COMMENT,
+        variables: {
+          data: data,
+          userId: userId,
+          postId: postId,
+        },
+      })
+      .pipe(
+        map((result: any) => {
+          console.log('Comment Result', result);
+          return result.data.addComment;
         })
       );
   }

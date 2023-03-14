@@ -36,9 +36,20 @@
       <form class="post-form">
         <mat-form-field class="post-comment">
           <mat-label>Leave a comment</mat-label>
-          <input type="text" matInput placeholder="Comment here..." />
+          <input
+            type="text"
+            [(ngModel)]="temp_comments[post.id]"
+            name="post_comment"
+            matInput
+            placeholder="Comment here..."
+          />
         </mat-form-field>
-        <button mat-fab color="primary" aria-label="Comment">
+        <button
+          (click)="addComment(post.id)"
+          mat-fab
+          color="primary"
+          aria-label="Comment"
+        >
           <mat-icon>send</mat-icon>
         </button>
       </form>

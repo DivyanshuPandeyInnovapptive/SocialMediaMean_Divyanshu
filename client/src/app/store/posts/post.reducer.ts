@@ -52,5 +52,35 @@ export const postsReducer = createReducer(
       ...state,
       posts: state.posts.filter((post) => post.id !== action.payload.id),
     };
+  }),
+
+  // comment
+  on(postActions.addComment, (state, action) => {
+    return {
+      ...state,
+    };
+  }),
+  on(postActions.addCommentSuccess, (state, action) => {
+    return {
+      ...state,
+      posts: state.posts.map((post) => {
+        if (post.id === action.postId.id) {
+          let temp_post = post;
+          temp_post.comments.push({
+            id: action.id,
+            data: action.data,
+            userId: {
+              id: action.userId.id,
+              name: action.userId.name,
+              email: action.userId.email,
+            },
+            timestamp: action.timestamp,
+          });
+          return temp_post;
+        } else {
+          return post;
+        }
+      }),
+    };
   })
 );

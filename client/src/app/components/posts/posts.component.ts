@@ -13,11 +13,25 @@ import { selectPosts } from 'src/app/store/posts/post.selectors';
 })
 export class PostsComponent {
   user_id = '640eea0a0af8537bdbc41942';
+  temp_comments: any = {};
 
   @Output() updatePostEvent = new EventEmitter<Post>();
 
   updatePost(post: Post) {
     this.updatePostEvent.emit(post);
+  }
+
+  addComment(id: string) {
+    // console.log(id, this.temp_comments[id]);
+    console.log(this.temp_comments[id], this.user_id, id);
+    this.store.dispatch(
+      postsActions.addComment({
+        data: this.temp_comments[id],
+        userId: this.user_id,
+        postId: id,
+      })
+    );
+    this.temp_comments[id] = '';
   }
   // posts$: Observable<Post[]> = this.apiService.getPosts();
 

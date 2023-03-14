@@ -36,3 +36,27 @@ export const deletePostSuccess = createAction(
   '[Posts Component] Delete_Post_Success',
   props<{ payload: Partial<Post> }>()
 );
+
+// comment
+
+export const addComment = createAction(
+  '[Posts Component] Add_Comment',
+  props<{ data: string; userId: string; postId: string }>()
+);
+
+export const addCommentSuccess = createAction(
+  '[Posts Component] Add_Comment',
+  props<{
+    id: string;
+    postId: {
+      id: string;
+    };
+    data: string;
+    userId: {
+      id: string;
+      name: string;
+      email: string;
+    };
+    timestamp: string;
+  }>()
+);
