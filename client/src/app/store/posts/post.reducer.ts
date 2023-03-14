@@ -65,17 +65,20 @@ export const postsReducer = createReducer(
       ...state,
       posts: state.posts.map((post) => {
         if (post.id === action.postId.id) {
-          let temp_post = post;
-          temp_post.comments.push({
-            id: action.id,
-            data: action.data,
-            userId: {
-              id: action.userId.id,
-              name: action.userId.name,
-              email: action.userId.email,
+          let temp_post = JSON.parse(JSON.stringify(post));
+          temp_post.comments = [
+            ...temp_post.comments,
+            {
+              id: action.id,
+              data: action.data,
+              userId: {
+                id: action.userId.id,
+                name: action.userId.name,
+                email: action.userId.email,
+              },
+              timestamp: action.timestamp,
             },
-            timestamp: action.timestamp,
-          });
+          ];
           return temp_post;
         } else {
           return post;

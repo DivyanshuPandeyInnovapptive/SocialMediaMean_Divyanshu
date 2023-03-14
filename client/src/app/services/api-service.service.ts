@@ -92,7 +92,6 @@ export class ApiServiceService {
       })
       .pipe(
         map((result: any) => {
-          console.log('Comment Result', result);
           return result.data.addComment;
         })
       );

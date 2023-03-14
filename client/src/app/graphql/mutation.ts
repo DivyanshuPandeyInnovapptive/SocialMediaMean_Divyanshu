@@ -62,7 +62,7 @@ export const DELETE_POST = gql`
 
 // comment
 export const ADD_COMMENT = gql`
-  mutation addComment($data: String!, $userId: String!, $postId: String!) {
+  mutation addComment($data: String!, $userId: ID!, $postId: ID!) {
     addComment(data: $data, userId: $userId, postId: $postId) {
       id
       data
