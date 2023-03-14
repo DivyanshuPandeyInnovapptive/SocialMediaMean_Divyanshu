@@ -75,7 +75,6 @@ export class PostsEffects {
         };
       }),
       mergeMap((comment) => {
-        // console.log('madarchod', comment);
         return this.apiService
           .addComment(comment.data, comment.userId, comment.postId)
           .pipe(
